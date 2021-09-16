@@ -1,0 +1,18 @@
+#!/bin/zsh
+#autoload
+# List modules loaded
+# $1 = -l for full file name
+# $2 =
+function list_modules {
+
+  printf "Modules:\n"
+  for module in $_ZMOD_modules; do
+    if [[ "$1" == -l ]]; then
+      printf "${module}\n"
+    else
+      printf "${module:t:r}\n" # keep only module name (remove path and file extension)
+    fi
+  done
+
+}
+list_modules "$@"
