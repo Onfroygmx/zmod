@@ -26,7 +26,7 @@ typeset -ag _ZMOD_modules
 
 autoload -Uz \
   @source_compile                \
-  @module_list
+  @list_modules
 
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
@@ -39,7 +39,7 @@ zmod() {
       ;;
     list)
       shift
-      @mlist_modules "$@"
+      @list_modules "$@"
       return 0
       ;;
     *)
