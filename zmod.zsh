@@ -27,12 +27,18 @@ typeset -ag _ZMOD_modules
 
 autoload -Uz \
   @source_compile                \
+  @compile_plugins               \
   @list_modules
 
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
 zmod() {
   case "$1" in
+    compile)
+      shift
+      @compile_plugins "$@"
+      return 0
+      ;;
     load)
       shift
       @source_compile "$@"
