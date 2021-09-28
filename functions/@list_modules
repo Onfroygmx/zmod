@@ -17,7 +17,7 @@ function list_modules {
         ;;
       -dl)
         printf "${module}\n" | awk {'printf ("%6.3f ms:    ", ($3-$2)*1000)'}
-        printf "${module}\n"
+        printf "${module}\n" | awk {'print $4'}
         ;;
       *)
         printf "${module:t:r}\n"
