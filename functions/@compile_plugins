@@ -1,0 +1,13 @@
+#!/bin/zsh
+#autoload
+# If needed recompile zsh files in plugin folders
+# $1 = file to compile
+
+function compile_plugins {
+  for file in .dot/plugins/**/*.zsh; do
+    if [[ -s ${file} && ( ! -s ${file}.zwc || ${file} -nt ${file}.zwc) ]]; then
+      zcompile "${file}" 2>/dev/null
+    fi
+  done
+}
+compile_plugins "$@"
