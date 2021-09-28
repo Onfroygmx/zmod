@@ -7,12 +7,22 @@ function list_modules {
 
   printf "Modules:\n"
   for module in $_ZMOD_modules; do
-    if [[ "$1" == -l ]]; then
-      printf "${module}\n"
-    else
-      printf "${module:t:r}\n" # keep only module name (remove path and file extension)
-    fi
+    case "$1" in
+      -l)
+        printf "${module}\n"
+        ;;
+      -d)
+        printf "${module}\n" | awk {'printf ("%6.3f ms:    ", ($3-$2)*1000)'}
+        printf "${module:t:r}\n"
+        ;;
+      -dl)
+        printf "${module}\n" | awk {'printf ("%6.3f ms:    ", ($3-$2)*1000)'}
+        printf "${module}\n"
+        ;;
+      *)
+        printf "${module:t:r}\n"
+        ;;
+    esac
   done
-
 }
 list_modules "$@"
