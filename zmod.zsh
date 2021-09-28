@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 #!/bin/zsh
 ## Modules manager for zsh
+zmodload zsh/datetime
 
 # Zsh Plugin Standard compatibility
 # 0 – the plugin manager provides the ZERO parameter,
