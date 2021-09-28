@@ -3,7 +3,7 @@
 # If needed recompile zsh files in plugin folders
 # $1 = folder to compile
 
-function compile_plugins {
+function compile_dir {
   local folder=${1}
   for file in ${folder}/**/*.zsh; do
     if [[ -s ${file} && ( ! -s ${file}.zwc || ${file} -nt ${file}.zwc) ]]; then
@@ -12,4 +12,4 @@ function compile_plugins {
   done
   unset folder
 }
-compile_plugins "$@"
+compile_dir "$@"

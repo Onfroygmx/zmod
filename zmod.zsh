@@ -27,7 +27,7 @@ typeset -ag _ZMOD_modules
 
 autoload -Uz \
   @source_compile                \
-  @compile_plugins               \
+  @compile_dir                   \
   @list_modules
 
 # FUNCTION: zmod. [[[
@@ -36,7 +36,7 @@ zmod() {
   case "$1" in
     compile)
       shift
-      @compile_plugins "$@"
+      @compile_dir "$@"
       return 0
       ;;
     load)
