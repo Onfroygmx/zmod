@@ -3,6 +3,7 @@
 # List modules loaded
 # $1 = -l for full file name
 # $2 =
+autoload -U colors && colors
 function list_modules {
 
   printf "Modules:\n"
@@ -13,7 +14,7 @@ function list_modules {
         ;;
       -d)
         printf "${module}\n" | awk {'printf ("%6.3f ms:    ", ($3-$2)*1000)'}
-        printf "${module:t:r}\n"
+        printf "${module}\n" | awk {'print $1'}
         ;;
       -dl)
         printf "${module}\n" | awk {'printf ("%6.3f ms:    ", ($3-$2)*1000)'}

@@ -6,6 +6,7 @@
 function source_compile {
 
   local file="$1"
+  local name="$2"
   local start=$EPOCHREALTIME
 
   # We can't compile files that do not exist
@@ -18,7 +19,7 @@ function source_compile {
 
   builtin source "${file}"
 
-  _ZMOD_modules+="${file:t:r} ${start} $EPOCHREALTIME ${file}"
+  _ZMOD_modules+="${name} ${start} $EPOCHREALTIME ${file}"
   unset file start
 }
 source_compile "$@"
