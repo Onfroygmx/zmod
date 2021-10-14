@@ -26,9 +26,9 @@ typeset -aU fpath
 typeset -ag _ZMOD_modules
 
 autoload -Uz \
-  @source_compile                \
-  @compile_dir                   \
-  @list_modules
+  @load                \
+  @zcompile            \
+  @list
 
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
@@ -36,17 +36,17 @@ zmod() {
   case "$1" in
     compile)
       shift
-      @compile_dir "$@"
+      @zcompile "$@"
       return 0
       ;;
     load)
       shift
-      @source_compile "$@"
+      @load "$@"
       return 0
       ;;
     list)
       shift
-      @list_modules "$@"
+      @list "$@"
       return 0
       ;;
     *)

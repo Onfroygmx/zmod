@@ -1,0 +1,38 @@
+#!/bin/zsh
+#autoload
+# List modules loaded
+# $1 = -l for full file name
+# $2 =
+autoload -U colors && colors
+function list_modules {
+
+  printf "Modules:\n"
+  for module in $_ZMOD_modules; do
+    # Split module string into array
+    module_info=(${(s. .)module})
+    local name=$module_info[1]
+    local mod_path=$module_info[4]
+    local -F start=$module_info[2]
+    local -F end=$module_info[3]
+    local -F took_ms='1e3 * (end - start)'
+
+    case "$1" in
+      -f)
+        printf "${module}\n"
+        ;;
+      -l)
+        printf "$mod_path\n"
+        ;;
+      -d)
+        printf "%6.3f ms:\t$name\n" $took_ms
+        ;;
+      -dl)
+        printf "%6.3f ms:\t$mod_path\n" $took_ms
+        ;;
+      *)
+        printf "${name:t}\n"
+        ;;
+    esac
+  done
+}
+list_modules "$@"

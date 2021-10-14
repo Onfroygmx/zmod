@@ -1,0 +1,10 @@
+#!/bin/zsh
+#autoload
+# Source files and recompile them if needed
+# $1 = file(s) to source
+
+function zcompile-many {
+    local f
+    for f; do zcompile -R -- "$f".zwc "$f"; done
+}
+zcompile-many "$@"
