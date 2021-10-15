@@ -28,7 +28,8 @@ typeset -ag _ZMOD_modules
 autoload -Uz \
   @load                \
   @zcompile            \
-  @list
+  @list                \
+  @zmod_help
 
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
@@ -49,8 +50,11 @@ zmod() {
       @list "$@"
       return 0
       ;;
+    -h|--help|help)
+      @zmod_help "$@"
+      ;;
     *)
-      println "No Function found"
+      printf "No Function found\n"
       return 0
       ;;
    esac

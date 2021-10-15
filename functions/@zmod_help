@@ -1,0 +1,12 @@
+#autoload
+#!/bin/zsh
+
+############################################################
+# Displays help
+############################################################
+
+print "usage: zmod command [...]
+help        display help
+load        load module
+list        list loaded modules
+compile     zcompile specified files or directories" | fold -s -w $COLUMNS

@@ -1,0 +1,50 @@
+#compdef zmod
+#!/bin/zsh
+
+_zmod() {
+  local context curcontext="$curcontext" state line
+  typeset -A opt_args
+
+  local ret=1
+
+  _arguments -C \
+    '1: :_zmod_cmds' \
+    '*::args:->args'
+
+    case $state in
+      (args)
+        case $line[1] in
+          (list)
+            _arguments '1:: :_list_scmd'
+            ;;
+          *)
+            _message 'no more arguments'
+          ;;
+        esac
+      ;;
+    esac
+}
+
+(( $+functions[_zmod_cmds] )) ||
+_zmod_cmds() {
+  local commands; commands=(
+  'load:Load zsh file/module'
+  'list:List loaded modules'
+  'compile:Compile zsh file(s)'
+  '--help:Print this help text'
+  )
+  _describe -t commands 'Zmod command' commands "$@"
+}
+
+(( $+functions[_list_scmd] )) ||
+_list_scmd() {
+  local scmd; scmd=(
+  '-l:List with long file name'
+  '-d:List with detailed loading times'
+  '-dl:List with detailed loading times and long file names'
+  '-f:List full module information'
+  )
+  _describe -t scmd 'Zmod list scmd' scmd "$@"
+}
+
+_zmod "$@"
