@@ -45,13 +45,13 @@ zmod() {
       @load "$@"
       return 0
       ;;
-    list)
+    -l|list)
       shift
       @list "$@"
       return 0
       ;;
     -h|--help|help)
-      @zmod_help "$@"
+      @zmod_help
       ;;
     *)
       printf "No Function found\n"

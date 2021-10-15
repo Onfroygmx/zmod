@@ -29,9 +29,9 @@ _zmod() {
 _zmod_cmds() {
   local commands; commands=(
   'load:Load zsh file/module'
-  'list:List loaded modules'
+  {list,-l}':List loaded modules'
   'compile:Compile zsh file(s)'
-  '--help:Print this help text'
+  {help,--help}':Print this help text'
   )
   _describe -t commands 'Zmod command' commands "$@"
 }
