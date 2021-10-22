@@ -45,7 +45,7 @@ zmod() {
       @load "$@"
       return 0
       ;;
-    -l|list)
+    list)
       shift
       @list "$@"
       return 0

@@ -29,7 +29,7 @@ _zmod() {
 _zmod_cmds() {
   local commands; commands=(
   'load:Load zsh file/module'
-  {list,-l}':List loaded modules'
+  'list:List loaded modules'
   'compile:Compile zsh file(s)'
   {help,--help}':Print this help text'
   )
