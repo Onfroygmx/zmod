@@ -1,8 +1,8 @@
-#autoload
 #!/bin/zsh
+#autoload
 
-# Source files and recompile them if needed
-# $1 = file(s) to source
+# Zcompile file(s)
+# $1 = file(s) to compile
 
 function zcompile-many {
     local f

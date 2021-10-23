@@ -1,9 +1,9 @@
-#autoload
 #!/bin/zsh
+#autoload
 
 # List modules loaded
-# $1 = -l for full file name
-# $2 =
+# $1 = option
+
 autoload -U colors && colors
 function list_modules {
 

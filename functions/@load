@@ -1,5 +1,5 @@
-#autoload
 #!/bin/zsh
+#autoload
 
 # Source files and recompile them if needed
 # $1 = file to source
