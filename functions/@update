@@ -1,0 +1,25 @@
+#!/bin/zsh
+#autoload
+
+# Update git repos in specified folder and subfolders
+# $1 = folder to start the search
+
+function gitupdate {
+
+  local folder=$1
+  local -a git_repos
+  git_repos=( ${folder:A}/**/.git )
+  git_repos=( ${git_repos:h} )
+
+  print
+  print -P "%F{green}Update git repositories in ${folder}:%f"
+  local repo
+  for repo in $git_repos; do
+    local git_repo=$(git -C ${repo} config --get remote.origin.url)
+    print
+    print -P "Update: %F{yellow}${git_repo}%f"
+    print -P "Located: %F{cyan}${repo}%f"
+    git -C $repo pull
+  done
+}
+gitupdate "$@"

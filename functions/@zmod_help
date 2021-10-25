@@ -10,4 +10,5 @@ print "usage: zmod command [...]
 help        display help
 load        load module
 list        list loaded modules
-compile     zcompile specified files or directories" | fold -s -w $COLUMNS
+compile     zcompile specified files or directories
+update      update git plugins in specified folder" | fold -s -w $COLUMNS

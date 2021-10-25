@@ -4,7 +4,6 @@
 # List modules loaded
 # $1 = option
 
-autoload -U colors && colors
 function list_modules {
 
   printf "Modules:\n"

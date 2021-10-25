@@ -30,6 +30,7 @@ _zmod_cmds() {
   local commands; commands=(
   'load:Load zsh file/module'
   'list:List loaded modules'
+  'update:Update git plugins'
   'compile:Compile zsh file(s)'
   {help,--help}':Print this help text'
   )

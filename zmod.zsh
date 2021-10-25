@@ -29,6 +29,7 @@ autoload -Uz \
   @load                \
   @zcompile            \
   @list                \
+  @update              \
   @zmod_help
 
 # FUNCTION: zmod. [[[
@@ -50,6 +51,11 @@ zmod() {
       @list "$@"
       return 0
       ;;
+    update)
+        shift
+        @update "$@"
+        return 0
+        ;;
     -h|--help|help)
       @zmod_help
       ;;
