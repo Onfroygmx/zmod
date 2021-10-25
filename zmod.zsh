@@ -52,10 +52,10 @@ zmod() {
       return 0
       ;;
     update)
-        shift
-        @update "$@"
-        return 0
-        ;;
+      shift
+      @update "$@"
+      return 0
+      ;;
     -h|--help|help)
       @zmod_help
       ;;
