@@ -35,26 +35,15 @@ autoload -Uz \
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
 zmod() {
-  case "$1" in
+
+  local cmd
+  [[ -n $1 ]] && cmd=$1 && shift
+  case $cmd in
+    load|list|update)
+      @${cmd} "$@"
+      ;;
     compile)
-      shift
       @zcompile "$@"
-      return 0
-      ;;
-    load)
-      shift
-      @load "$@"
-      return 0
-      ;;
-    list)
-      shift
-      @list "$@"
-      return 0
-      ;;
-    update)
-      shift
-      @update "$@"
-      return 0
       ;;
     -h|--help|help)
       @zmod_help

@@ -4,8 +4,8 @@
 # Zcompile file(s)
 # $1 = file(s) to compile
 
-function zcompile-many {
+@zcompile() {
     local f
     for f; do zcompile -R -- "$f".zwc "$f"; done
 }
-zcompile-many "$@"
+
