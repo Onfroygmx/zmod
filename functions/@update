@@ -4,7 +4,8 @@
 # Update git repos in specified folder and subfolders
 # $1 = folder to start the search
 
-function gitupdate {
+
+@update() {
 
   local folder=$1
   local -a git_repos
@@ -17,9 +18,8 @@ function gitupdate {
   for repo in $git_repos; do
     local git_repo=$(git -C ${repo} config --get remote.origin.url)
     print
-    print -P "Update:  %F{yellow}${git_repo}%f"
+    print -P "Update: %F{yellow}${git_repo}%f"
     print -P "Located: %F{cyan}${repo}%f"
     git -C $repo pull
   done
 }
-gitupdate "$@"

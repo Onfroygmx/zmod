@@ -4,7 +4,7 @@
 # List modules loaded
 # $1 = option
 
-function list_modules {
+@list() {
 
   printf "Modules:\n"
   for module in $_ZMOD_modules; do
@@ -35,4 +35,3 @@ function list_modules {
     esac
   done
 }
-list_modules "$@"

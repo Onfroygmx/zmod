@@ -4,7 +4,7 @@
 # Source files and recompile them if needed
 # $1 = file to source
 # $2 = module name
-function source_compile {
+@load() {
 
   local file="$1"
   local name="$2"
@@ -22,4 +22,3 @@ function source_compile {
   unset name file start
 
 }
-source_compile "$@"
