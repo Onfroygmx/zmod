@@ -25,12 +25,24 @@ typeset -aU fpath
 
 typeset -ag _ZMOD_modules
 
+ZSH_SCRIPT=${0##*/}
+
 autoload -Uz \
-  @load                \
-  @zcompile            \
-  @list                \
-  @update              \
-  @zmod_help
+  @list                 \
+  @load                 \
+  @update               \
+  @zcompile
+
+_zmod_help() {
+  print -r -- "usage: ${ZSH_SCRIPT:r} [COMMANDS] [...]"
+  print -r --
+  print -r -- 'COMMANDS'
+  print -r -- '  -h,--help,help  display help information'
+  print -r -- '  compile <path>  zcompile specified file(s)'
+  print -r -- '  list <options>  list loaded modules'
+  print -r -- '  load <path>     load module'
+  print -r -- '  update <path>   update git plugins in specified folder'
+}
 
 # FUNCTION: zmod. [[[
 # Main function directly exposed to user
@@ -38,6 +50,7 @@ zmod() {
 
   local cmd
   [[ -n $1 ]] && cmd=$1 && shift
+
   case $cmd in
     load|list|update)
       @${cmd} "$@"
@@ -46,7 +59,7 @@ zmod() {
       @zcompile "$@"
       ;;
     -h|--help|help)
-      @zmod_help
+      _zmod_help
       ;;
     *)
       printf "No Function found\n"
