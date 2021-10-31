@@ -22,4 +22,11 @@
     print -P "Located: %F{cyan}${repo}%f"
     git -C $repo pull
   done
+  unset folder git_repos git_repo repo
+
+  @zcompile $PLUGINS_DIR/zsh-users/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
+  @zcompile $PLUGINS_DIR/zsh-users/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+  @zcompile $PLUGINS_DIR/zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+  @zcompile $PLUGINS_DIR/zmod/zmod.zsh
+
 }
