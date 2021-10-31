@@ -17,6 +17,9 @@ _zmod() {
           (list)
             _arguments '1:: :_list_scmd'
             ;;
+          (compile|load|update)
+            _arguments '1:: :_files'
+            ;;
           *)
             _message 'no more arguments'
           ;;
@@ -32,7 +35,7 @@ _zmod_cmds() {
   'list:List loaded modules'
   'update:Update git plugins'
   'compile:Compile zsh file(s)'
-  {help,--help}':Print this help text'
+  {help,--help}':Display help information'
   )
   _describe -t commands 'Zmod command' commands "$@"
 }
