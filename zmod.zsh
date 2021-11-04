@@ -31,7 +31,8 @@ autoload -Uz \
   @list                 \
   @load                 \
   @update               \
-  @zcompile
+  @zcompile             \
+  @zompinit
 
 _zmod_help() {
   print -r -- "usage: ${ZSH_SCRIPT:r} [COMMANDS] [...]"

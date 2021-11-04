@@ -1,0 +1,35 @@
+#!/bin/zsh
+#autoload
+
+# Source files and recompile them if needed
+# $1 = file to source
+# $2 = module name
+
+@zcompinit() {
+    emulate -L zsh; setopt local_options extended_glob
+    local dump=$1
+    local start=$EPOCHREALTIME
+    # if compdump is less than 20 hours old, consider it fresh and shortcut it with `compinit -C`
+    #
+    # -D ........... disables .zcompudump file
+    # -d ........... used to set an alternative name to zcompdump
+    # -i ........... accept insecure files
+    # -C ........... ignore checking at all
+    # Glob magic explained:
+    #   #q expands globs in conditional expressions
+    #   N - sets null_glob option (no error on 0 results)
+    #   mh-20 - modified less than 20 hours ago
+    if [[ "$dump" != "-f" ]] && [[ $dump(#qNmh-20) ]]; then
+    # -C (skip function check) implies -i (skip security check).
+      compinit -C -d "$dump"
+    else
+      compinit -i -d "$dump"
+      touch "$dump"
+    fi
+
+    _ZMOD_modules+="${dump:t:r} ${start} $EPOCHREALTIME ${dump}"
+
+    unset dump start
+
+    unsetopt local_options extended_glob
+}
