@@ -5,7 +5,8 @@
 # $1 = file(s) to compile
 
 @zcompile() {
-    local f
-    for f; do zcompile -R -- "$f".zwc "$f"; done
+    local file
+    for file; do
+        [[ "${file}.zwc" -nt "$file" ]] || sched +1 zcompile -R -- "$file".zwc "$file"
+    done
 }
-

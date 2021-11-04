@@ -27,6 +27,8 @@
       touch "$dump"
     fi
 
+    @zcompile "$dump"
+
     _ZMOD_modules+="${dump:t:r} ${start} $EPOCHREALTIME ${dump}"
 
     unset dump start
