@@ -44,8 +44,8 @@ _zmod_help() {
   print -r -- '  -h,--help,help  display help information'
   print -r -- '  compile <path>  zcompile specified file(s)'
   print -r -- '  list <options>  list loaded modules'
-  print -r -- '  load <path>     load module'
-  print -r -- '  update <path>   update git plugins in specified folder'
+  print -r -- '  load    <path>  load module'
+  print -r -- '  update  <path>  update git plugins in specified folder'
 }
 
 # Main function directly exposed to user
