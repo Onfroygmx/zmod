@@ -6,7 +6,9 @@
 
 @list() {
 
+  local -F startup_p=$STARTUP_Z
   printf "Modules:\n"
+
   for module in $_ZMOD_modules; do
     # Split module string into array
     module_info=(${(s. .)module})
@@ -15,6 +17,7 @@
     local -F start=$module_info[2]
     local -F end=$module_info[3]
     local -F took_ms='1e3 * (end - start)'
+    local -F startup_ms='end - startup_p'
 
     case "$1" in
       -f)
@@ -29,6 +32,8 @@
       -dl)
         printf "%6.3f ms:\t$mod_path\n" $took_ms
         ;;
+      -s)
+        printf "%6.3f sec:\t$name\n" $startup_ms
       *)
         printf "${name:t}\n"
         ;;
