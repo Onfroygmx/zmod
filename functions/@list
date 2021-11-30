@@ -6,6 +6,7 @@
 
 @list() {
 
+  # Add STARTUP_Z=$EPOCHREALTIME at the end of your .zshrc
   local -F startup_p=$STARTUP_Z
   printf "Modules:\n"
 
@@ -34,6 +35,7 @@
         ;;
       -s)
         printf "%6.3f sec:\t$name\n" $startup_ms
+        ;;
       *)
         printf "${name:t}\n"
         ;;
