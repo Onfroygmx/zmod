@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 #!/bin/zsh
 ## Modules manager for zsh
+
 zmodload zsh/datetime
 
 # Zsh Plugin Standard compatibility
@@ -25,6 +26,7 @@ typeset -aU fpath
 
 typeset -ag _ZMOD_modules
 
+# Retrieve script name
 ZSH_SCRIPT=${0##*/}
 
 autoload -Uz \
@@ -34,6 +36,7 @@ autoload -Uz \
   @zcompile             \
   @zcompinit
 
+# Help function
 _zmod_help() {
   print -r -- "usage: ${ZSH_SCRIPT:r} [COMMANDS] [...]"
   print -r --
@@ -45,7 +48,6 @@ _zmod_help() {
   print -r -- '  update <path>   update git plugins in specified folder'
 }
 
-# FUNCTION: zmod. [[[
 # Main function directly exposed to user
 zmod() {
 
@@ -67,4 +69,4 @@ zmod() {
       return 0
       ;;
    esac
-} # ]]]
+}

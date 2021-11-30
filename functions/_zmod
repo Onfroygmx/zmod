@@ -11,21 +11,21 @@ _zmod() {
     '1: :_zmod_cmds' \
     '*::args:->args'
 
-    case $state in
-      (args)
-        case $line[1] in
-          (list)
-            _arguments '1:: :_list_scmd'
-            ;;
-          (compile|load|update)
-            _arguments '1:: :_files'
-            ;;
-          *)
-            _message 'no more arguments'
+  case $state in
+    (args)
+      case $line[1] in
+        (list)
+          _arguments '1:: :_list_scmd'
           ;;
-        esac
-      ;;
-    esac
+        (compile|load|update)
+          _arguments '1:: :_files'
+          ;;
+        *)
+          _message 'no more arguments'
+        ;;
+      esac
+    ;;
+  esac
 }
 
 (( $+functions[_zmod_cmds] )) ||
