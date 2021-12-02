@@ -6,7 +6,7 @@
 # $2 = module name
 
 @zcompinit() {
-    emulate -L zsh; setopt local_options extended_glob
+    # emulate -L zsh; setopt local_options extended_glob
     local dump=$1
     local start=$EPOCHREALTIME
     # if compdump is less than 20 hours old, consider it fresh and shortcut it with `compinit -C`
