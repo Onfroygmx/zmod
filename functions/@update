@@ -7,6 +7,11 @@
 
 @update() {
 
+  if [[ $#1 -eq 0 ]]; then
+    print -P "%F{red}Please provide a path%f"
+    return 0
+  fi
+
   local folder=$1
   local -a git_repos
   git_repos=( ${folder:A}/**/.git )
@@ -24,9 +29,9 @@
   done
   unset folder git_repos git_repo repo
 
-  @zcompile $PLUGINS_DIR/zsh-users/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
-  @zcompile $PLUGINS_DIR/zsh-users/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
-  @zcompile $PLUGINS_DIR/zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
-  @zcompile $PLUGINS_DIR/zmod/zmod.zsh
+  @zcompile $PLUGIN_DIR/zsh-users/zsh-syntax-highlighting/{zsh-syntax-highlighting.zsh,highlighters/*/*.zsh}
+  @zcompile $PLUGIN_DIR/zsh-users/zsh-autosuggestions/{zsh-autosuggestions.zsh,src/**/*.zsh}
+  @zcompile $PLUGIN_DIR/zsh-users/zsh-history-substring-search/zsh-history-substring-search.zsh
+  @zcompile $PLUGIN_DIR/zmod/zmod.zsh
 
 }
