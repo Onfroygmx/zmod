@@ -46,7 +46,7 @@ _list_scmd() {
     '-d:List with detailed loading times'
     '-dl:List with detailed loading times and long file names'
     '-f:List full module information'
-      '-l:List with long file name'
+    '-l:List with long file name'
     '-s:List with loading time compared to prompt'
   )
   _describe -t scmd 'Zmod list scmd' scmd "$@"
