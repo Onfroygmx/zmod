@@ -18,7 +18,7 @@
   git_repos=( ${git_repos:h} )
 
   print
-  print -P "%F{green}Update git repositories in ${folder}:%f"
+  print -P "%F{green}Update git repositories in %F{red}${folder}%F{green}:%f"
   local repo
   for repo in $git_repos; do
     local git_repo=$(git -C ${repo} config --get remote.origin.url)
